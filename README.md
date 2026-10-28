@@ -1,1 +1,1 @@
-# map-service__frontend
+frontend

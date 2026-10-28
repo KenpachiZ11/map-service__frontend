@@ -1,0 +1,35 @@
+$background: (
+  default: #1a1a1a,                 // Основной фон (глубокий графит)
+  defaultSecondary: #2d2d2d,        // Карточки, модалки
+);
+
+$accent: (
+  primary: #4a4a4a,                 // Кнопки, ссылки, акценты
+  secondary: #c0c0c0,               // Hover состояния, выделения
+);
+
+$text: (
+  textPrimary: #e8e8e8,             // Основной текст (светлый на тёмном)
+  textSecondary: #a0a0a0,           // Второстепенный текст, описания
+  textAccent: #c0c0c0,              // Важные элементы, заголовки
+);
+
+$secondary: (
+  border: #3d3d3d,                  // Границы, разделители
+  hover: #5a5a5a,                   // Hover эффекты
+);
+
+$gradient: (
+  gradientPrimary: linear-gradient(135deg, #2d2d2d 0%, #1a1a1a 100%),
+  gradientAccent: linear-gradient(135deg, #c0c0c0 0%, #a0a0a0 100%),
+);
+
+$neon: (
+  neonCyan: #00e5ff,                // Яркие акценты, подсветка
+  neonPurple: #9e9e9e,              // Альтернативные акценты
+);
+
+$shadow: (
+  glow: 0 0 20px rgba(74, 74, 74, 0.5),
+  glowAccent: 0 0 20px rgba(192, 192, 192, 0.4),
+);
