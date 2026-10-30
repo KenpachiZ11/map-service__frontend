@@ -2,7 +2,7 @@ import React from 'react';
 
 type Props = {};
 
-export const Component = ({}: Props) => {
+export const Home = ({}: Props) => {
   return <div>
     
   </div>
