@@ -1,7 +1,6 @@
 import React from 'react';
+import { Layout } from './widgets/Layout/Layout';
 
-import { Layout } from './widgets/layout/Layout';
+type Props = {};
 
-type Props = {}
-
-export const App: React.FC<Props> = () => <Layout />
+export const App = ({}: Props) => <Layout />
