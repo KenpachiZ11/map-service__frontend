@@ -6,6 +6,6 @@
 /.react-router/
 /build/
 
-/docs/
+/docs
 /dist
 .clinerules

@@ -1,6 +1,6 @@
 @use 'sass:map';
-@use './theme.scss' as *;
-@use './variables' as *;
+@use '../../shared/styles/theme.scss' as *;
+@use '../../shared/styles/variables' as *;
 
 * {
   margin: 0;

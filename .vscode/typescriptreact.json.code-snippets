@@ -6,9 +6,9 @@
       "",
       "type Props = {};",
       "",
-      "export const ${1:Component} = ({}: Props) => {",
+      "export const ${TM_FILENAME_BASE} = ({}: Props) => {",
       "  return <div>",
-      "    $0",
+      "    ${TM_FILENAME_BASE}",
       "  </div>",
       "}"
     ],

@@ -1,9 +1,37 @@
+@use 'sass:map';
+@use '../../../shared/styles/theme.scss' as *;
+@use '../../../shared/styles/variables' as *;
+
 .wrapper {
   display: flex;
   flex-direction: column;
   gap: 10px;
   align-items: center;
   justify-content: flex-start;
-  // background-color: pink;
-  padding: 10px 0;
+  width: 100%;
+  padding: map.get($spacing, SM);
+}
+
+.wrapper_main {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  & > div:nth-child(2) {
+    font-size: 12px;
+  }
+}
+
+.link {
+  color: map.get($text, textPrimary);
+  transition: color 0.2s ease;
+  width: 100%;
+
+  &:hover {
+    color: map.get($neon, neonCyan);
+  }
+}
+
+.active {
+  color: map.get($neon, neonCyan);
 }
