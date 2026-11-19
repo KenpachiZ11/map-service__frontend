@@ -1,0 +1,1 @@
+export { profileThunk, profileReducer } from './profileSlice';

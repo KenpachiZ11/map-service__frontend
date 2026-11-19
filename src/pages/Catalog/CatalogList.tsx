@@ -6,7 +6,8 @@ import { Page } from '@/widgets/Page';
 type Props = {};
 
 export const CatalogList = ({}: Props) => {
-  return <Page title="Каталог">
+  return <Page>
+    <h2>Каталог</h2>
     <ul>
       <li><Link to="/catalog/item/1">Товар 1</Link></li>
       <li><Link to="/catalog/item/2">Товар 2</Link></li>

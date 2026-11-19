@@ -4,7 +4,7 @@ import { createBrowserRouter } from "react-router-dom";
 import { Layout } from '@/widgets/Layout/Layout';
 
 import { PageLoader } from './PageLoader';
-import { HomePage, ProfilePage, CatalogListPage, CatalogItemPage } from './lazyPages';
+import { HomePage, ProfilePage, CatalogListPage, CatalogItemPage, AdminPage } from './lazyPages';
 
 const routers = [
   { index: true,        element: <HomePage /> },
@@ -16,6 +16,7 @@ const routers = [
       { path: 'item/:id',  element: <CatalogItemPage /> },
     ],
   },
+  { path: 'admin',      element: <AdminPage /> },
   { path: '*',          element: <div>Такой страницы не существует</div> },
 ];
 

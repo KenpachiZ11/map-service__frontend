@@ -1,0 +1,32 @@
+@use 'sass:map';
+@use '../../styles/theme.scss' as *;
+@use '../../styles/variables' as *;
+
+// Оверлей — клик по нему закрывает модалку
+.wrapper {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.6);
+  z-index: 1000;
+}
+
+// Контейнер
+.wrapper_block {
+  position: relative;
+  min-width: 320px;
+  min-height: 160px;
+  padding: map.get($spacing, LG);
+  background-color: map.get($background, defaultSecondary);
+  border-radius: map.get($radius, MD);
+  box-shadow: map.get($shadow, glow);
+}
+
+.closed_button {
+  position: absolute;
+  top: map.get($spacing, SM);
+  right: map.get($spacing, SM);
+  cursor: pointer;
+}

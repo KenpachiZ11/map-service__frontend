@@ -5,6 +5,9 @@ import styles from './Page.module.scss';
 type Props = { children: ReactNode };
 
 export const Page = ({ children }: Props) => {
-
-  return <div className={styles.wrapper}>{ children }</div>
+  return (
+    <div className={styles.wrapper}>
+      {children}
+    </div>
+  );
 };

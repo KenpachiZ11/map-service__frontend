@@ -25,9 +25,23 @@ const defaultOnSuccess = <TData>(
   state.data = action.payload;
 };
 
-export const handlerExtraReducers = <TData, TArg>(
+/**
+ * Достаёт человекочитаемое сообщение из отклонённого thunk-действия.
+ * Покрывает rejectWithValue({ status, message }) и стандартную ошибку thunk (error.message).
+ */
+const getRejectedMessage = (payload: unknown, error: unknown): string => {
+  const p = payload as { message?: unknown } | undefined;
+  if (p && typeof p.message === 'string' && p.message) return p.message;
+
+  const e = error as { message?: unknown } | undefined;
+  if (e && typeof e.message === 'string' && e.message) return e.message;
+
+  return 'Неизвестная ошибка';
+};
+
+export const handlerExtraReducers = <TData>(
   builder: ActionReducerMapBuilder<AsyncState<TData>>,
-  api: AsyncThunk<TData, TArg, {}>,
+  api: AsyncThunk<TData, any, any>,
   onSuccess: (state: AsyncState<TData>, action: PayloadAction<TData>) => void = defaultOnSuccess,
 ) => {
   builder
@@ -41,26 +55,31 @@ export const handlerExtraReducers = <TData, TArg>(
     })
     .addCase(api.rejected, (state, action) => {
       state.isLoading = false;
-      state.isError =
-        typeof action.payload === 'string'
-          ? action.payload
-          : action.error.message ?? 'Неизвестная ошибка';
+      state.isError = getRejectedMessage(action.payload, action.error);
     });
 };
 
-export const createInitialStateSlice = <TData, TArg>(
+/**
+ * Слайс с async-состоянием { data, isLoading, isError } для одного thunk.
+ * TData задаётся явно (тип данных из fulfilled-ответа); thunk принимается как unknown
+ * и приводится на границе — хелпер совместим с любым AsyncThunk (в т.ч. от createInitialThunk
+ * с rejectValue, который структурно не совместим с типизированным AsyncThunk).
+ */
+export const createInitialStateSlice = <TData>(
   name: string,
-  api: AsyncThunk<TData, TArg, {}>,
+  api: unknown,
   onSuccess?: (state: AsyncState<TData>, action: PayloadAction<TData>) => void,
   customInitialState?: AsyncState<TData>,
-): Slice<AsyncState<TData>> =>
-  createSlice({
+): Slice<AsyncState<TData>> => {
+  const thunk = api as AsyncThunk<TData, any, any>;
+  return createSlice({
     name,
     initialState:
       customInitialState ??
       (initialAsyncState as unknown as AsyncState<TData>),
     reducers: {},
     extraReducers: (builder) => {
-      handlerExtraReducers(builder, api, onSuccess);
+      handlerExtraReducers<TData>(builder, thunk, onSuccess);
     },
   });
+};

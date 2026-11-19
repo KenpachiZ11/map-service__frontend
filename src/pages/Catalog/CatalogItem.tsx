@@ -8,7 +8,8 @@ type Props = {};
 export const CatalogItem = ({}: Props) => {
   const { id } = useParams();
 
-  return <Page title={`Товар #${id}`}>
+  return <Page>
+    <h2>Товар #{id}</h2>
     <Link to="/catalog">← Назад в каталог</Link>
   </Page>
 }

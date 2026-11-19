@@ -4,3 +4,4 @@ export const HomePage         = lazy(() => import(/* webpackPrefetch: true */'..
 export const ProfilePage      = lazy(() => import(/* webpackPrefetch: true */'../../pages/Profile/Profile').then(m => ({ default: m.Profile })));
 export const CatalogListPage  = lazy(() => import(/* webpackPrefetch: true */'../../pages/Catalog/CatalogList').then(m => ({ default: m.CatalogList })));
 export const CatalogItemPage  = lazy(() => import(/* webpackPrefetch: true */'../../pages/Catalog/CatalogItem').then(m => ({ default: m.CatalogItem })));
+export const AdminPage        = lazy(() => import(/* webpackPrefetch: true */'../../pages/Admin/Admin').then(m => ({ default: m.Admin })));

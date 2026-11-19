@@ -1,0 +1,96 @@
+@use 'sass:map';
+@use '../../styles/theme.scss' as *;
+
+.wrapper {
+  width: 100%;
+  position: relative;
+
+  // Формконтрол — убираем дефолтные отступы если нужно
+  :global(.MuiFormControl-root) {
+    width: 100%;
+  }
+
+  :global(input.MuiInputBase-input) {
+    padding: 0;
+    padding-left: 20px;
+    color: #fff;
+    -webkit-text-fill-color: #fff;
+  }
+
+  :global(.MuiInputAdornment-root) {
+    & > button {
+      color: #fff;
+    }
+  }
+
+  :global(.MuiOutlinedInput-root) {
+    // ─── Фиксируем высоту ─────────────────────────────────
+    height: 40px;
+
+    // ─── Дефолтное состояние ───────────────────────────────
+    :global(.MuiOutlinedInput-notchedOutline) {
+      border-radius: 4px;
+      border-color: map.get($primary, FocusVisible);
+      transition: border-color 0.2s ease;
+    }
+
+    // ─── Hover ────────────────────────────────────────────
+    &:hover {
+      :global(.MuiOutlinedInput-notchedOutline) {
+        border-color: #fff;
+      }
+    }
+
+    // ─── Focus ────────────────────────────────────────────
+    // MUI вешает Mui-focused на root — поэтому важен specificity
+    &:global(.Mui-focused) {
+      :global(.MuiOutlinedInput-notchedOutline) {
+        border-color: #fff;
+        // MUI при фокусе делает border-width: 2px — сбрасываем если не нужно
+        border-width: 1px;
+      }
+    }
+
+    // ─── Disabled ─────────────────────────────────────────
+    &:global(.Mui-disabled) {
+      :global(.MuiOutlinedInput-notchedOutline) {
+        border-color: rgba(255, 255, 255, 0.3);
+      }
+    }
+
+    // ─── Error ────────────────────────────────────────────
+    &:global(.Mui-error) {
+      :global(.MuiOutlinedInput-notchedOutline) {
+        border-color: map.get($error, Main);
+      }
+    }
+  }
+
+  // ─── Label ──────────────────────────────────────────────
+  :global(.MuiInputLabel-root) {
+    // font-size: 14px;
+    color: map.get($text, textSecondary);
+    top: 50%;
+    transform: translate(14px, -50%) scale(1);
+
+    transition:
+      color 200ms cubic-bezier(0, 0, 0.2, 1),
+      transform 200ms cubic-bezier(0, 0, 0.2, 1),
+      font-size 200ms cubic-bezier(0, 0, 0.2, 1),
+      top 200ms cubic-bezier(0, 0, 0.2, 1);
+
+    // Label при фокусе
+    &:global(.MuiInputLabel-shrink) {
+      top: 0;
+      transform: translate(14px, -9px) scale(0.75);
+    }
+
+    &:global(.Mui-focused) {
+      color: map.get($text, textSecondary);
+    }
+
+    &:global(.Mui-disabled) {
+      color: rgba(255, 255, 255, 0.3);
+    }
+  }
+}

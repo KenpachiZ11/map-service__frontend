@@ -1,0 +1,26 @@
+@use 'sass:map';
+@use '../../../shared/styles/theme.scss' as *;
+@use '../../../shared/styles/variables' as *;
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: map.get($spacing, MD);
+  padding-top: map.get($spacing, LG);
+}
+
+.title {
+  font-size: 18px;
+  font-weight: 600;
+  color: map.get($text, textPrimary);
+}
+
+.error {
+  color: map.get($error, Main);
+  font-size: 13px;
+}
+
+.timer {
+  color: map.get($accent, secondary);
+  font-size: 13px;
+}

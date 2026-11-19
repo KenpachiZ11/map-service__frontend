@@ -1,8 +1,28 @@
 .wrapper {
   height: 100%;
   width: 100%;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 10px;
+  padding: 0 10px;
+}
+
+.wrapper_header {
+  width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
-  // background-color: black;
+}
+
+.wrapper_buttons {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+.wrapper_user {
+  color: #e8e8e8;
+  font-size: 14px;
 }

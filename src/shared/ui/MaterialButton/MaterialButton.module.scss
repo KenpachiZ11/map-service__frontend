@@ -1,0 +1,49 @@
+@use 'sass:map';
+@use '../../styles/theme.scss' as *;
+@use '../../styles/variables' as *;
+
+.button {
+  &:global(.MuiButtonBase-root) {
+    height: 40px;
+    text-transform: none;      // MUI делает буквы капсом по умолчанию — отключаем
+    border-radius: map.get($radius, SM);
+    color: map.get($text, textPrimary);
+  }
+
+
+  // ─── Outlined ─── как рамка у MaterialInput
+  &:global(.MuiButton-outlined) {
+    border-color: map.get($primary, FocusVisible);
+
+    &:hover {
+      border-color: #fff;
+      background-color: transparent;
+    }
+  }
+
+  // ─── Contained ─── тёмная заливка карточки
+  &:global(.MuiButton-contained) {
+    background-color: map.get($background, defaultSecondary);
+    color: map.get($text, textPrimary);
+
+    &:hover {
+      background-color: map.get($primary, Hover);
+    }
+  }
+
+  // ─── Text ─── без рамки, лёгкий hover-фон
+  &:global(.MuiButton-text) {
+    color: map.get($text, textPrimary);
+
+    &:hover {
+      background-color: rgba(255, 255, 255, 0.08);
+    }
+  }
+
+  // ─── Disabled ─── полупрозрачный, как в MaterialInput
+  &:global(.Mui-disabled) {
+    color: rgba(255, 255, 255, 0.3);
+    border-color: rgba(255, 255, 255, 0.3);
+    background-color: transparent;
+  }
+}

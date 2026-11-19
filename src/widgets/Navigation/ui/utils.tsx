@@ -27,4 +27,10 @@ export const path: NavItem[] = [
     key: 'catalog',
     icon: <Icons icon_name={'list'} />,
   },
+  {
+    name: 'Админ',
+    path: '/admin',
+    key: 'admin',
+    icon: <Icons icon_name={'admin_panel'} />,
+  },
 ];
